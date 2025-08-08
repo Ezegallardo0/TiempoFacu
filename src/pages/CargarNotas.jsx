@@ -8,6 +8,7 @@ const CargarNotas = () => {
   const [materia, setMateria] = useState('');
   const [dia, setDia] = useState('');
   const [horario, setHorario] = useState('');
+  const [descripcion, setDescripcion] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -87,6 +88,18 @@ const CargarNotas = () => {
             id="horario"
             value={horario}
             onChange={(event) => setHorario(event.target.value)}
+            required
+            style={{ minHeight: 40 }}
+          />
+        </div>
+         <div className="mb-3">
+          <input
+            className="inputC"
+            placeholder="Horario"
+            type="date"
+            id="horario"
+            value={descripcion}
+            onChange={(event) => setDescripcion(event.target.value)}
             required
             style={{ minHeight: 40 }}
           />
