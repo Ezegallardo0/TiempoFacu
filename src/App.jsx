@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import './styles/App.css'
 import Nav from './components/Nav';
 import Home from './pages/Home';
-import CargarNotas from './pages/cargarnotas';
+import CargarNotas from './pages/CargarNotas';
 import EditarNotas from './pages/EditarNotas';
 import Calendario from './components/Calendario';
 import Footer from './components/Footer';
