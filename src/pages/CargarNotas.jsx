@@ -8,7 +8,7 @@ const CargarNotas = () => {
   const [materia, setMateria] = useState('');
   const [dia, setDia] = useState('');
   const [horario, setHorario] = useState('');
-  const [descripcion, setDescripcion] = useState(''); // Aquí escribís tareas separadas por coma
+  const [descripcion, setDescripcion] = useState(''); // ahora será un string simple
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -21,17 +21,12 @@ const CargarNotas = () => {
       return;
     }
 
-    // Convertimos la descripción en un array de tareas separadas por coma
-    const tareasArray = descripcion
-      .split(',')
-      .map((t) => t.trim())
-      .filter((t) => t.length > 0);
-
+    // Guardamos la descripción tal cual texto (string)
     const nuevaNota = {
       materia: materia.trim(),
       dia: dia.trim(),
       horario: horario.trim(),
-      tareas: tareasArray, // Guardamos array de tareas
+      descripcion: descripcion.trim(), // Guardamos el texto directamente
     };
 
     try {
@@ -42,24 +37,18 @@ const CargarNotas = () => {
       });
 
       if (!response.ok) {
-        console.error('Error al agregar la nota, status:', response.status);
         setError('Su Nota no ha sido agregada correctamente');
         return;
       }
 
-      const created = await response.json();
-      console.log('Nota agregada correctamente:', created);
-
-      // Limpiamos el formulario
+      // Limpiar formulario
       setMateria('');
       setDia('');
       setHorario('');
       setDescripcion('');
 
-      // Volvemos a Home
       navigate('/');
     } catch (err) {
-      console.error('Error en la solicitud:', err);
       setError('Error en la solicitud: ' + (err.message || err));
     }
   };
@@ -67,7 +56,7 @@ const CargarNotas = () => {
   return (
     <div className="container">
       <h1 className="text-center mt-1">Cargar Eventos</h1>
-      <form className='formu' onSubmit={handleSubmit}>
+      <form className="formu" onSubmit={handleSubmit}>
         <div className="mb-3">
           <input
             className="inputC"
@@ -75,7 +64,7 @@ const CargarNotas = () => {
             type="text"
             id="materia"
             value={materia}
-            onChange={(event) => setMateria(event.target.value)}
+            onChange={(e) => setMateria(e.target.value)}
             required
           />
         </div>
@@ -86,7 +75,7 @@ const CargarNotas = () => {
             type="text"
             id="descripcion"
             value={descripcion}
-            onChange={(event) => setDescripcion(event.target.value)}
+            onChange={(e) => setDescripcion(e.target.value)}
             required
             style={{ minHeight: 40 }}
           />
@@ -98,7 +87,7 @@ const CargarNotas = () => {
             type="date"
             id="dia"
             value={dia}
-            onChange={(event) => setDia(event.target.value)}
+            onChange={(e) => setDia(e.target.value)}
             required
           />
         </div>
@@ -109,13 +98,13 @@ const CargarNotas = () => {
             type="time"
             id="horario"
             value={horario}
-            onChange={(event) => setHorario(event.target.value)}
+            onChange={(e) => setHorario(e.target.value)}
             required
             style={{ minHeight: 40 }}
           />
         </div>
         {error && <div className="alert alert-danger">{error}</div>}
-        <button className='BOTON' type="submit">
+        <button className="BOTON" type="submit">
           Agregar Eventos
           <span></span>
         </button>
