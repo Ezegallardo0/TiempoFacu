@@ -1,6 +1,73 @@
-/* En tu archivo Footer.css */
+.footer-container {
+  padding: 1rem 1.5rem; /* menos padding */
+  text-align: center;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: inherit;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+}
 
-/* Estilos para el tema claro */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* menos espacio entre secciones */
+  max-width: 900px;
+  width: 100%;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  min-width: 250px;
+  text-align: center;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 8px; /* menos margen */
+  font-weight: 600;
+  font-size: 1.1rem; /* tamaño fuente un poco más pequeño */
+}
+
+.footer-section p {
+  margin-bottom: 6px; /* menos margen */
+  font-size: 0.9rem; /* fuente más pequeña */
+}
+
+/* Links */
+.footer-link {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+/* Para links que solo tienen íconos, quitamos subrayado */
+.icon-link {
+  border-bottom: none !important;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* menos gap */
+}
+
+.social-icons a {
+  display: inline-block;
+  transition: color 0.3s ease;
+  font-size: 20px; /* íconos un poco más chicos */
+  border-bottom: none !important;
+}
+
+/* -------- Tema claro -------- */
 .light .footer-container {
   background-color: #f0f0f0;
   color: #222;
@@ -15,7 +82,20 @@
   border-bottom-color: #333;
 }
 
-/* Estilos para el tema oscuro */
+.light .footer-section h3,
+.light .footer-section h4 {
+  color: #333;
+}
+
+.light .social-icons a {
+  color: #555;
+}
+
+.light .social-icons a:hover {
+  color: #333;
+}
+
+/* -------- Tema oscuro -------- */
 .dark .footer-container {
   background-color: #1a1a1a;
   color: #f0f0f0;
@@ -30,9 +110,15 @@
   border-bottom-color: #4a91f4;
 }
 
-/* Estilos que son comunes a ambos temas (si los hay) */
-.footer-container {
-  padding: 2rem;
-  text-align: center;
-  width: 100%;
+.dark .footer-section h3,
+.dark .footer-section h4 {
+  color: #61dafb;
+}
+
+.dark .social-icons a {
+  color: #f0f0f0;
+}
+
+.dark .social-icons a:hover {
+  color: #4a91f4;
 }
