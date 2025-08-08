@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/nav.css"
+import "../styles/Nav.css"
 import { Link } from "react-router-dom";
 
 // Componente toggle switch
