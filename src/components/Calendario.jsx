@@ -107,7 +107,7 @@ const Calendario = () => {
     yearOptions.push({ value: y, label: y.toString() });
   }
 
-  if (loading) return <p>Cargando calendario...</p>;
+  if (loading) return<div className="load-row"><span></span> <span></span> <span></span><span></span></div>
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (

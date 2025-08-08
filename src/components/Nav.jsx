@@ -30,7 +30,6 @@ const Nav = () => {
     <>
       <h1 className="name">TIEMPO FACU</h1>
       <div className="input">
-
         <Link className="value nav-link" to="/">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
           Inicio</Link>
@@ -67,8 +66,6 @@ const Nav = () => {
           </svg>
           Contacto
         </a>
-
-
         <div
           className="toggle-container"
           onClick={toggleDarkMode}
@@ -82,6 +79,10 @@ const Nav = () => {
             )}
           </span>
         </div>
+        <Link to="/login" className="value nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in-icon lucide-log-in"><path d="m10 17 5-5-5-5"/><path d="M15 12H3"/><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/></svg>
+        Iniciar Sesion
+          </Link>
       </div>
     </>
   );

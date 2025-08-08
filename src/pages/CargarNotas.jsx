@@ -1,4 +1,3 @@
-// CargarNotas.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../styles/agregar.css"
@@ -40,15 +39,13 @@ const CargarNotas = () => {
         return;
       }
 
-      const created = await response.json(); // <-- objeto creado por MockAPI (incluye id)
+      const created = await response.json();
       console.log('Nota agregada correctamente:', created);
 
-      // limpiar campos
       setMateria('');
       setDia('');
       setHorario('');
 
-      // volver al Home (Home hará fetch otra vez y mostrará la nota)
       navigate('/');
     } catch (err) {
       console.error('Error en la solicitud:', err);
@@ -58,8 +55,8 @@ const CargarNotas = () => {
 
   return (
     <div className="container">
-      <h1 className="text-center mt-3">Cargar Eventos</h1>
-      <form className='formu' onSubmit={handleSubmit} style={{ maxWidth: 400, margin: "0 auto" }}>
+      <h1 className="text-center mt-1">Cargar Eventos</h1>
+      <form className='formu' onSubmit={handleSubmit}>
         <div className="mb-3">
           <input
             className="inputC"
@@ -95,7 +92,8 @@ const CargarNotas = () => {
           />
         </div>
         {error && <div className="alert alert-danger">{error}</div>}
-        <button className='BOTON' type="submit"> Agregar Eventos
+        <button className='BOTON' type="submit">
+          Agregar Eventos
           <span></span>
         </button>
       </form>
