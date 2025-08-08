@@ -7,7 +7,7 @@ import EditarNotas from './pages/EditarNotas';
 import Calendario from './components/Calendario';
 import Footer from './components/Footer';
 import Login from './components/login';
-import Register from './components/register';
+import Register from './components/Register';
 
 function App() {
 
