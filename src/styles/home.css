@@ -1,0 +1,306 @@
+/* Contenedor principal */
+.home-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Encabezado */
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.home-title {
+  margin: 0;
+}
+/* Botones */
+.home-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.load-row {
+  position: fixed;           
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;                  
+}
+
+.load-row span {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  animation: up-down6 0.6s ease-in-out infinite alternate;
+}
+
+.load-row span:nth-child(1) {
+  background: rgb(2, 179, 233); 
+}
+
+.load-row span:nth-child(2) {
+  background: rgba(2, 179, 233, 0.8);
+  animation-delay: 0.12s;
+}
+
+.load-row span:nth-child(3) {
+  background: rgba(2, 179, 233, 0.6);
+  animation-delay: 0.24s;
+}
+
+.load-row span:nth-child(4) {
+  background: rgba(2, 179, 233, 0.4);
+  animation-delay: 0.36s;
+}
+
+@keyframes up-down6 {
+  0%   { transform: translateY(-14px); }
+  100% { transform: translateY(14px); }
+}
+
+/* From Uiverse.io by vinodjangid07 */ 
+.reload {
+  border-radius: 20rem;
+  border-color: transparent;
+  position: relative;
+  padding: 0.7em 1.4em;
+  background: transparent;
+  cursor: pointer;
+  color: rgb(65, 77, 248);
+  box-shadow: 0 4px 12px rgba(58, 58, 58, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.reload span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+}
+
+.reload span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8%;
+  height: 500%;
+  background: var(--lightgray);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-60deg);
+  transition: all 0.3s;
+}
+
+.reload:hover span::before {
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 100%;
+}
+
+.reload:hover .lucide-rotate-cw-icon {
+  animation: bellRing 0.9s both;
+}
+
+/* bell ringing animation keyframes*/
+@keyframes bellRing {
+  0%,
+  100% {
+    transform-origin: top;
+  }
+
+  15% {
+    transform: rotateZ(10deg);
+  }
+
+  30% {
+    transform: rotateZ(-10deg);
+  }
+
+  45% {
+    transform: rotateZ(5deg);
+  }
+
+  60% {
+    transform: rotateZ(-5deg);
+  }
+
+  75% {
+    transform: rotateZ(2deg);
+  }
+}
+
+.reload:active {
+  transform: scale(0.8);
+}
+
+.link-button {
+  border: none;
+  display: block;
+  position: relative;
+  padding: 0.7em 2.4em;
+  font-size: 18px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  color: royalblue;
+  z-index: 1;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.link-button span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+  border: 4px solid royalblue;
+}
+
+.link-button span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8%;
+  height: 500%;
+  background: var(--lightgray);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-60deg);
+  transition: all 0.3s;
+}
+
+.link-button:hover span::before {
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 100%;
+  background: royalblue;
+}
+
+.link-button:hover {
+  color: white;
+}
+
+.link-button:active span::before {
+  background: #2751cd;
+}
+
+/* Cargando */
+.cargando {
+  padding: 24px;
+}
+
+/* Error */
+.error-message {
+  margin-bottom: 12px;
+  color: red;
+}
+
+.nota-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  border-bottom: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 3px 10px rgb(88, 88, 88);
+  /* si querés que el contenido textual sea flexible para que los botones no lo aplasten */
+  gap: 1em;
+}
+
+.botones {
+  display: flex;
+  align-items: center;
+  margin-left: 10em; /* separa los botones del texto */
+  gap: 0; /* sin espacio entre botones */
+}
+
+.delete {
+  margin-right: 10px; /* separa un poco el botón eliminar del botón editar */
+}
+
+.delete,
+.editBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.editBtn{
+  color: black;
+}
+
+.editBtn:hover{
+  color: #087fe0;
+}
+.delete:hover{
+  color: red;
+}
+
+.delete .icon,
+.editBtn svg {
+  height: 1.5em;
+  width: 1.5em;
+  fill: currentColor;
+}
+
+/* Responsive para pantallas menores o iguales a 1200px */
+@media (max-width: 1200px) {
+  /* Para cada nota (.nota-item) */
+  .home-header {
+    flex-direction: column;
+    justify-content: center;
+    position: static;
+    
+  }
+  .nota-item {
+    flex-direction: column;      /* apila vertical */
+    align-items: flex-start;     /* texto alineado a la izquierda */
+    gap: 8px;
+  }
+
+  /* El texto primero, que ocupe todo el ancho */
+  .nota-item > :first-child {
+    width: 100%;
+  }
+.home-buttons {
+    position: static;
+    margin-top: 15px;
+    justify-content: center;
+  }
+  /* Los botones debajo, separados */
+  .botones {
+    margin-left: 0;             /* quitar margen lateral */
+    width: 100%;                /* que ocupen todo el ancho */
+    display: flex;
+    justify-content: flex-start; /* alineados a la izquierda */
+    gap: 12px;                   /* espacio entre botones */
+  }
+}
+@media (max-width: 600px) {
+  .home-header {
+    flex-direction: column;
+    justify-content: center;
+    position: static;
+  }
+
+  .home-buttons {
+    position: static;
+    margin-top: 15px;
+    justify-content: center;
+  }
+}
+

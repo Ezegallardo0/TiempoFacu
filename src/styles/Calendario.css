@@ -1,0 +1,224 @@
+/* react-select estilos base */
+.react-select__control {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 2px 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.react-select__control--is-focused {
+  border-color: #667eea;
+  box-shadow: 0 0 5px rgba(102, 126, 234, 0.7);
+}
+
+.react-select__menu {
+  z-index: 100; /* Para que no quede tapado */
+}
+
+.react-select__option--is-focused {
+  background-color: #667eea;
+  color: white;
+}
+
+.react-select__option--is-selected {
+  background-color: #764ba2;
+  color: white;
+}
+
+/* Mantenemos estilos del calendario anteriores */
+.calendario-container {
+  max-width: 700px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.calendario-boton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.calendario-boton:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+.calendario-titulo-contenedor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendario-mes {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.calendario-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  border-bottom: 1px solid #f80000;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.calendario-semana div {
+  font-weight: bold;
+  text-align: center;
+}
+
+.calendario-dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendario-dia {
+  min-height: 90px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px;
+  font-size: 14px;
+  overflow-y: auto;
+  color: black;
+  background-color: white;
+}
+
+.calendario-dia.inactivo {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.calendario-dia.con-notas {
+  background-color: #d1e7dd;
+}
+
+.calendario-numero {
+  font-weight: bold;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+}
+
+.calendario-lista-notas {
+  padding-left: 10px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.calendario-lista-notas li {
+  margin-bottom: 4px;
+}
+
+
+.btn-conteiner {
+  display: flex;
+  justify-content: center;
+  --color-text: #9ee5fa;
+  --color-background: #353535;
+  --color-outline: #9ee5fa80;
+  --color-shadow: #00000080;
+}
+
+
+
+.btn-content {
+  /* Para que el botón sea un círculo perfecto */
+  width: 40px;      /* ancho fijo */
+  height: 40px;     /* alto fijo */
+  padding: 0;       /* quitar padding */
+  justify-content: center; /* centrar contenido horizontalmente */
+  border-radius: 50%; /* círculo perfecto */
+}
+
+.btn-content .icon-arrow {
+  /* Quitar márgenes para que no salga del círculo */
+  margin-left: 0;
+  margin-right: 0;
+  transform: scale(0.7); /* ajustar tamaño */
+  position: static;      /* quitar posición relativa para evitar desplazamientos */
+  top: 0;
+  width: 20px;           /* ancho svg */
+}
+
+.btn-content:hover .icon-arrow {
+  /* Mantener sin mover la flecha para que no salga del círculo */
+  margin-right: 0;
+}
+
+.icon-arrow {
+  /* Quitar margin-left y top */
+  margin-left: 0;
+  top: 0;
+  position: static;
+}
+#arrow-icon-one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+#arrow-icon-two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.btn-content:hover #arrow-icon-three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.btn-content:hover #arrow-icon-one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.btn-content:hover #arrow-icon-two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+/* SVG animations */
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+
+  50% {
+    fill: var(--color-background);
+  }
+
+  100% {
+    fill: #9ee5fa;
+  }
+}
+
+/* Button animations */
+@-webkit-keyframes btn-content {
+  0% {
+    outline: 0.2em solid var(--color-background);
+    outline-offset: 0;
+  }
+}
+
+@keyframes btn-content {
+  0% {
+    outline: 0.2em solid var(--color-background);
+    outline-offset: 0;
+  }
+}

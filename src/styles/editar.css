@@ -1,0 +1,56 @@
+/* From Uiverse.io by adamgiebl */ 
+.BOTON {
+  border: none;
+  margin-left: 6.5rem;
+  display: block;
+  position: relative;
+  padding: 0.7em 1.4em;
+  font-size: 18px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  color: royalblue;
+  z-index: 1;
+  font-family: inherit;
+  font-weight: 500;
+  
+}
+
+.BOTON span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+  border: 4px solid royalblue;
+}
+
+.BOTON span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8%;
+  height: 500%;
+  background: var(--lightgray);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-60deg);
+  transition: all 0.3s;
+}
+
+.BOTON:hover span::before {
+  transform: translate(-50%, -50%) rotate(-90deg);
+  width: 100%;
+  background: royalblue;
+}
+
+.BOTON:hover {
+  color: white;
+}
+
+.BOTON:active span::before {
+  background: #2751cd;
+}

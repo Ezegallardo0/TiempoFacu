@@ -1,0 +1,38 @@
+/* En tu archivo Footer.css */
+
+/* Estilos para el tema claro */
+.light .footer-container {
+  background-color: #f0f0f0;
+  color: #222;
+}
+
+.light .footer-link {
+  color: #555;
+  border-bottom-color: #999;
+}
+
+.light .footer-link:hover {
+  border-bottom-color: #333;
+}
+
+/* Estilos para el tema oscuro */
+.dark .footer-container {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.dark .footer-link {
+  color: #f0f0f0;
+  border-bottom-color: #f0f0f0;
+}
+
+.dark .footer-link:hover {
+  border-bottom-color: #4a91f4;
+}
+
+/* Estilos que son comunes a ambos temas (si los hay) */
+.footer-container {
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
