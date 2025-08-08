@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer-container">
       <div className="footer-content">
-        <p>2024 Tiempo Facu © Todos los derechos reservados.</p>
+        <p>2025 Tiempo Facu © Todos los derechos reservados.</p>
           Contacto {" "}
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=ezequieljoelgallardo@gmail.com"

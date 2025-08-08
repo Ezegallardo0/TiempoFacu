@@ -47,7 +47,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <header className="home-header">
-        <h1 className="home-title">Notas cargadas</h1>
+        <h1 className="home-title">Eventos cargados</h1>
         <div className="home-buttons">
           <button onClick={fetchNotas} className="reload">
             <svg
@@ -66,7 +66,7 @@ const Home = () => {
               <path d="M21 3v5h-5" />
             </svg>
           </button>
-          <Link to="/cargarNotas" className="link-button"> Cargar Nota
+          <Link to="/cargarNotas" className="link-button"> Cargar evento
             <span></span>
           </Link>
         </div>
@@ -75,7 +75,7 @@ const Home = () => {
       {error && <div className="error-message">{error}</div>}
 
       {notas.length === 0 ? (
-        <p className="no-notas">No hay notas cargadas.</p>
+        <p className="no-notas">No hay eventos cargados.</p>
       ) : (
         <ul className="notas-list">
           {notas.map((nota) => (

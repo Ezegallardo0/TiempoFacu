@@ -58,7 +58,7 @@ const CargarNotas = () => {
 
   return (
     <div className="container">
-      <h1 className="text-center mt-3">Cargar Notas</h1>
+      <h1 className="text-center mt-3">Cargar Eventos</h1>
       <form className='formu' onSubmit={handleSubmit} style={{ maxWidth: 400, margin: "0 auto" }}>
         <div className="mb-3">
           <input
@@ -95,7 +95,7 @@ const CargarNotas = () => {
           />
         </div>
         {error && <div className="alert alert-danger">{error}</div>}
-        <button className='BOTON' type="submit"> Agregar Nota
+        <button className='BOTON' type="submit"> Agregar Eventos
           <span></span>
         </button>
       </form>
