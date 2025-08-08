@@ -66,7 +66,7 @@ const Home = () => {
               <path d="M21 3v5h-5" />
             </svg>
           </button>
-          <Link to="/cargarNotas" className="link-button"> Cargar evento
+          <Link to="/cargarNotas" className="nav-link  link-button"> Cargar evento
             <span></span>
           </Link>
         </div>
