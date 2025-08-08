@@ -23,7 +23,6 @@ function App() {
           <Route path="/calendario" element={<Calendario />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="*" element={<Error />} />
         </Routes>
       </main>
       <Footer />
