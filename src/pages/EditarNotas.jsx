@@ -9,6 +9,7 @@ const EditarNotas = () => {
   const [materia, setMateria] = useState("");
   const [dia, setDia] = useState("");
   const [horario, setHorario] = useState("");
+  const [descripcion, setDescripcion] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -59,7 +60,7 @@ const EditarNotas = () => {
     fetch(`https://6892b509c49d24bce8681f80.mockapi.io/notas/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ materia, dia, horario }),
+      body: JSON.stringify({ materia, dia, horario, descripcion }),
     })
       .then((res) => {
         if (!res.ok) {
@@ -78,7 +79,7 @@ const EditarNotas = () => {
   };
 
   if (loading) {
-    return <h1 className="text-center mt-3">Cargando...</h1>;
+    return <div className="load-row"><span></span> <span></span> <span></span><span></span></div>
   }
 
   return (
@@ -98,6 +99,18 @@ const EditarNotas = () => {
             value={materia}
             onChange={(e) => setMateria(e.target.value)}
             required
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            className="inputC"
+            placeholder="descripcion"
+            type="text"
+            id="horario"
+            value={descripcion}
+            onChange={(event) => setDescripcion(event.target.value)}
+            required
+            style={{ minHeight: 40 }}
           />
         </div>
         <div className="mb-3">

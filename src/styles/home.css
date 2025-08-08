@@ -209,46 +209,46 @@
 
 .nota-item {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 0.5em 1em;
   border-bottom: 1px solid #ddd;
   border-radius: 8px;
   margin-bottom: 12px;
   box-shadow: 0 3px 10px rgb(88, 88, 88);
-  /* si querés que el contenido textual sea flexible para que los botones no lo aplasten */
-  gap: 1em;
+  gap: 0.5em;
 }
 
 .botones {
   display: flex;
   align-items: center;
-  margin-left: 10em; /* separa los botones del texto */
-  gap: 0; /* sin espacio entre botones */
+  margin-top: 10px;
+  gap: 10px;
 }
 
 .delete {
-  margin-right: 10px; /* separa un poco el botón eliminar del botón editar */
-}
-
-.delete,
-.editBtn {
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
   transition: color 0.3s ease;
-}
-
-.editBtn{
-  color: black;
-}
-
-.editBtn:hover{
-  color: #087fe0;
-}
-.delete:hover{
   color: red;
+}
+
+.delete:hover {
+  color: darkred;
+}
+
+.editBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.editBtn:hover {
+  color: #087fe0;
 }
 
 .delete .icon,
@@ -258,39 +258,103 @@
   fill: currentColor;
 }
 
+/* Lista de tareas con checkbox */
+.tareas-list {
+  list-style: disc inside;
+  margin-left: 1.2em;
+  padding-left: 0;
+}
+
+.tarea-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1rem;
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+/* Texto tachado y opaco cuando está marcado */
+.tarea-item.checked .tarea-text {
+  text-decoration: line-through;
+  color: #888;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+/* Checkbox oculto */
+.tarea-item input[type="checkbox"] {
+  display: none;
+}
+
+/* Label para el checkbox que muestra el SVG */
+.check {
+  cursor: pointer;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Hover efecto */
+.check:hover svg path,
+.check:hover svg polyline {
+  stroke: #3b82f6;
+}
+
+/* SVG base */
+.check svg {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #c8ccd4;
+  stroke-width: 1.5;
+  transition: stroke 0.3s ease;
+}
+
+/* SVG checked animación */
+input[type="checkbox"]:checked + .check svg {
+  stroke: #3b82f6;
+}
+
+input[type="checkbox"]:checked + .check svg path {
+  stroke-dashoffset: 60;
+  transition: stroke-dashoffset 0.3s linear;
+}
+
+input[type="checkbox"]:checked + .check svg polyline {
+  stroke-dashoffset: 42;
+  transition: stroke-dashoffset 0.2s linear 0.15s;
+}
+
 /* Responsive para pantallas menores o iguales a 1200px */
 @media (max-width: 1200px) {
-  /* Para cada nota (.nota-item) */
   .home-header {
     flex-direction: column;
     justify-content: center;
     position: static;
-    
-  }
-  .nota-item {
-    flex-direction: column;      /* apila vertical */
-    align-items: flex-start;     /* texto alineado a la izquierda */
-    gap: 8px;
   }
 
-  /* El texto primero, que ocupe todo el ancho */
-  .nota-item > :first-child {
-    width: 100%;
-  }
-.home-buttons {
+  .home-buttons {
     position: static;
     margin-top: 15px;
     justify-content: center;
   }
-  /* Los botones debajo, separados */
-  .botones {
-    margin-left: 0;             /* quitar margen lateral */
-    width: 100%;                /* que ocupen todo el ancho */
-    display: flex;
-    justify-content: flex-start; /* alineados a la izquierda */
-    gap: 12px;                   /* espacio entre botones */
+
+  .nota-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }
+
+/* Responsive para pantallas menores o iguales a 600px */
 @media (max-width: 600px) {
   .home-header {
     flex-direction: column;
@@ -303,5 +367,72 @@
     margin-top: 15px;
     justify-content: center;
   }
+}
+
+.descripcion-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 1rem 0;
+  max-width: 400px;
+}
+
+.descripcion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.descripcion-item input[type="checkbox"] {
+  /* Ocultamos el checkbox real para estilizar con label */
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #666;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  transition: background-color 0.3s, border-color 0.3s;
+  flex-shrink: 0;
+}
+
+/* Estilo cuando está checked */
+.descripcion-item input[type="checkbox"]:checked {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+/* Icono de check personalizado */
+.descripcion-item input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 7px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+/* El label (texto) se tacha cuando el checkbox está marcado */
+.descripcion-item input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Para que el label tome todo el espacio excepto el checkbox */
+.descripcion-item label {
+  flex-grow: 1;
+  margin-left: 12px;
+  cursor: pointer;
 }
 

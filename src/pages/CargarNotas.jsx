@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../styles/agregar.css"
+import "../styles/agregar.css";
 
 const API = 'https://6892b509c49d24bce8681f80.mockapi.io/notas';
 
@@ -8,7 +8,7 @@ const CargarNotas = () => {
   const [materia, setMateria] = useState('');
   const [dia, setDia] = useState('');
   const [horario, setHorario] = useState('');
-  const [descripcion, setDescripcion] = useState('');
+  const [descripcion, setDescripcion] = useState(''); // Aquí escribís tareas separadas por coma
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -21,10 +21,17 @@ const CargarNotas = () => {
       return;
     }
 
+    // Convertimos la descripción en un array de tareas separadas por coma
+    const tareasArray = descripcion
+      .split(',')
+      .map((t) => t.trim())
+      .filter((t) => t.length > 0);
+
     const nuevaNota = {
       materia: materia.trim(),
       dia: dia.trim(),
       horario: horario.trim(),
+      tareas: tareasArray, // Guardamos array de tareas
     };
 
     try {
@@ -43,10 +50,13 @@ const CargarNotas = () => {
       const created = await response.json();
       console.log('Nota agregada correctamente:', created);
 
+      // Limpiamos el formulario
       setMateria('');
       setDia('');
       setHorario('');
+      setDescripcion('');
 
+      // Volvemos a Home
       navigate('/');
     } catch (err) {
       console.error('Error en la solicitud:', err);
@@ -72,6 +82,18 @@ const CargarNotas = () => {
         <div className="mb-3">
           <input
             className="inputC"
+            placeholder="Tareas separadas por coma"
+            type="text"
+            id="descripcion"
+            value={descripcion}
+            onChange={(event) => setDescripcion(event.target.value)}
+            required
+            style={{ minHeight: 40 }}
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            className="inputC"
             placeholder="Día"
             type="date"
             id="dia"
@@ -88,18 +110,6 @@ const CargarNotas = () => {
             id="horario"
             value={horario}
             onChange={(event) => setHorario(event.target.value)}
-            required
-            style={{ minHeight: 40 }}
-          />
-        </div>
-         <div className="mb-3">
-          <input
-            className="inputC"
-            placeholder="Horario"
-            type="date"
-            id="horario"
-            value={descripcion}
-            onChange={(event) => setDescripcion(event.target.value)}
             required
             style={{ minHeight: 40 }}
           />

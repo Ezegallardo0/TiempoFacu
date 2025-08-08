@@ -8,6 +8,7 @@ const Home = () => {
   const [notas, setNotas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [checkedItems, setCheckedItems] = useState({});
 
   const fetchNotas = async () => {
     setLoading(true);
@@ -28,28 +29,39 @@ const Home = () => {
   const handleDelete = async (id) => {
     try {
       const response = await fetch(`${API}/${id}`, {
-        method: 'DELETE'
+        method: "DELETE",
       });
-      if (!response.ok) throw new Error('Error al eliminar');
-      // Si se eliminó bien, actualizo la lista sacando la nota eliminada
-      setNotas(notas.filter(nota => nota.id !== id));
+      if (!response.ok) throw new Error("Error al eliminar");
+      setNotas(notas.filter((nota) => nota.id !== id));
     } catch (error) {
-      console.error('Error eliminando la nota:', error);
+      console.error("Error eliminando la nota:", error);
     }
+  };
+
+  const handleCheck = (key) => {
+    setCheckedItems((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
 
   useEffect(() => {
     fetchNotas();
   }, []);
 
-  if (loading) return <div className="load-row"><span></span> <span></span> <span></span><span></span></div>
+  if (loading)
+    return (
+      <div className="load-row">
+        <span></span> <span></span> <span></span> <span></span>
+      </div>
+    );
 
   return (
     <div className="home-container">
       <header className="home-header">
         <h1 className="home-title">Eventos cargados</h1>
         <div className="home-buttons">
-          <button onClick={fetchNotas} className="reload">
+          <button onClick={fetchNotas} className="reload" aria-label="Recargar eventos">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -66,7 +78,8 @@ const Home = () => {
               <path d="M21 3v5h-5" />
             </svg>
           </button>
-          <Link to="/cargarNotas" className="add  nav-link link-button"> Cargar evento
+          <Link to="/cargarNotas" className="add nav-link link-button">
+            Cargar evento
             <span></span>
           </Link>
         </div>
@@ -89,9 +102,36 @@ const Home = () => {
               <div>
                 <strong>Horario:</strong> {nota.horario ?? "(sin horario)"}
               </div>
+              <div>
+                <strong>Descripción:</strong>
+                {nota.descripcion ? (
+                  <ul className="descripcion-list">
+                    {nota.descripcion.split(",").map((item, i) => {
+                      const key = `${nota.id}-${i}`;
+                      return (
+                        <li key={key} className="descripcion-item">
+                          <input
+                            type="checkbox"
+                            id={`cb-${key}`}
+                            checked={!!checkedItems[key]}
+                            onChange={() => handleCheck(key)}
+                          />
+                          <label htmlFor={`cb-${key}`}>{item.trim()}</label>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  "(sin descripción)"
+                )}
+              </div>
 
               <div className="botones">
-                <button className="delete" onClick={() => handleDelete(nota.id)} s>
+                <button
+                  className="delete"
+                  onClick={() => handleDelete(nota.id)}
+                  aria-label="Eliminar evento"
+                >
                   <svg
                     viewBox="0 0 15 17.5"
                     height="17.5"
@@ -118,7 +158,7 @@ const Home = () => {
             </li>
           ))}
         </ul>
-      )}      
+      )}
     </div>
   );
 };
