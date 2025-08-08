@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Login from './components/login';
 import Register from './components/Register';
 
+
 function App() {
 
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/calendario" element={<Calendario />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </main>
       <Footer />
