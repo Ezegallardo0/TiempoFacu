@@ -93,36 +93,33 @@ const Home = () => {
         <ul className="notas-list">
           {notas.map((nota) => (
             <li key={nota.id} className="nota-item">
-              <div>
-                <strong>Materia:</strong> {nota.materia ?? nota.name ?? "(sin nombre)"}
+              <div className="nota-materia">{nota.materia ?? nota.name ?? "(sin nombre)"}</div>
+              <div className="nota-info-chico">
+                <div>{nota.dia ?? "(sin día)"}</div>
+                <div>{nota.horario ?? "(sin horario)"}</div>
               </div>
               <div>
-                <strong>Día:</strong> {nota.dia ?? "(sin día)"}
-              </div>
-              <div>
-                <strong>Horario:</strong> {nota.horario ?? "(sin horario)"}
-              </div>
-              <div>
-                <strong>Descripción:</strong>
+                <strong>Tarea:</strong>
                 {nota.descripcion ? (
                   <ul className="descripcion-list">
-                    {nota.descripcion.split(",").map((item, i) => {
-                      const key = `${nota.id}-${i}`;
-                      return (
-                        <li key={key} className="descripcion-item">
-                          <input
-                            type="checkbox"
-                            id={`cb-${key}`}
-                            checked={!!checkedItems[key]}
-                            onChange={() => handleCheck(key)}
-                          />
-                          <label htmlFor={`cb-${key}`}>{item.trim()}</label>
-                        </li>
-                      );
-                    })}
+                    {typeof nota.descripcion === "string" &&
+                      nota.descripcion.split(",").map((item, i) => {
+                        const key = `${nota.id}-${i}`;
+                        return (
+                          <li key={key} className="descripcion-item">
+                            <input
+                              type="checkbox"
+                              id={`cb-${key}`}
+                              checked={!!checkedItems[key]}
+                              onChange={() => handleCheck(key)}
+                            />
+                            <label htmlFor={`cb-${key}`}>{item.trim()}</label>
+                          </li>
+                        );
+                      })}
                   </ul>
                 ) : (
-                  "(sin descripción)"
+                  "(sin tarea)"
                 )}
               </div>
 

@@ -1,3 +1,4 @@
+/* --- TU CSS ORIGINAL --- */
 /* Contenedor principal */
 .home-container {
   max-width: 700px;
@@ -208,21 +209,38 @@
 }
 
 .nota-item {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5em 1em;
-  border-bottom: 1px solid #ddd;
+  color: white;
+  border-bottom: 1px solid #444;
   border-radius: 8px;
   margin-bottom: 12px;
-  box-shadow: 0 3px 10px rgb(88, 88, 88);
+  box-shadow: 0 3px 10px rgb(88 88 88 / 0.6);
+  padding: 0.5em 1em;
+  display: flex;
+  flex-direction: column;
   gap: 0.5em;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* tema claro */
+body.light .nota-item {
+  background-color: white;
+  color: black;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+body.light .nota-materia {
+  color: black;
+}
+
+body.light .nota-info-chico {
+  color: #555;
 }
 
 .botones {
   display: flex;
   align-items: center;
-  margin-top: 10px;
-  gap: 10px;
+  gap: 20px;
 }
 
 .delete {
@@ -231,11 +249,12 @@
   cursor: pointer;
   padding: 0;
   transition: color 0.3s ease;
-  color: red;
+  color: rgb(119, 119, 119);
+  margin-left: 45%;
 }
 
 .delete:hover {
-  color: darkred;
+  color: rgb(255, 0, 0);
 }
 
 .editBtn {
@@ -243,7 +262,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  color: black;
+  color: rgb(121, 121, 121);
   transition: color 0.3s ease;
 }
 
@@ -273,7 +292,7 @@
   cursor: pointer;
   user-select: none;
   font-size: 1rem;
-  color: #222;
+  color: #ffffff;
   transition: color 0.3s ease;
 }
 
@@ -379,7 +398,6 @@ input[type="checkbox"]:checked + .check svg polyline {
 .descripcion-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 8px;
   padding: 8px 12px;
   border-radius: 6px;
@@ -388,29 +406,34 @@ input[type="checkbox"]:checked + .check svg polyline {
   user-select: none;
   transition: background-color 0.3s ease;
 }
-
 .descripcion-item input[type="checkbox"] {
-  /* Ocultamos el checkbox real para estilizar con label */
   appearance: none;
   -webkit-appearance: none;
   width: 22px;
   height: 22px;
-  border: 2px solid #666;
+  border: 2px solid #ffffff; /* borde blanco en oscuro */
   border-radius: 4px;
   cursor: pointer;
   position: relative;
   outline: none;
   transition: background-color 0.3s, border-color 0.3s;
   flex-shrink: 0;
+  background-color: transparent;
 }
 
-/* Estilo cuando está checked */
+/* Casilla checkbox base (tema claro) */
+body.light .descripcion-item input[type="checkbox"] {
+  border-color: #000000; /* borde negro en claro */
+  background-color: transparent;
+}
+
+/* Estado checked */
 .descripcion-item input[type="checkbox"]:checked {
   background-color: #4caf50;
   border-color: #4caf50;
 }
 
-/* Icono de check personalizado */
+/* Tilde (check) en modo oscuro: blanca, en claro: verde */
 .descripcion-item input[type="checkbox"]:checked::after {
   content: "";
   position: absolute;
@@ -418,9 +441,18 @@ input[type="checkbox"]:checked + .check svg polyline {
   left: 7px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border-style: solid;
   border-width: 0 2.5px 2.5px 0;
   transform: rotate(45deg);
+  border-color: white; /* color por defecto */
+}
+
+body.light .descripcion-item input[type="checkbox"]:checked::after {
+  border-color: #4caf50; /* verde para tema claro */
+}
+
+body.dark .descripcion-item input[type="checkbox"]:checked::after {
+  border-color: white; /* blanca para tema oscuro */
 }
 
 /* El label (texto) se tacha cuando el checkbox está marcado */
@@ -436,3 +468,19 @@ input[type="checkbox"]:checked + .check svg polyline {
   cursor: pointer;
 }
 
+/* NUEVO: Materia grande */
+.nota-materia {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* NUEVO: Día y horario uno debajo del otro, sin texto "día:" ni "horario:" */
+.nota-info-chico {
+  font-size: 0.85rem;
+  color: #a0a0a0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.6rem;
+}
