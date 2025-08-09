@@ -60,7 +60,7 @@ const CargarNotas = () => {
         <div className="mb-3">
           <input
             className="inputC"
-            placeholder="Materia"
+            placeholder="Evento"
             type="text"
             id="materia"
             value={materia}
